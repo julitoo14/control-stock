@@ -13,7 +13,7 @@
 **Respuesta de ejemplo:**
 ```json
 {
-    productos:[
+    productos:{[
         {
             _id: "13231ads31"
             nombre: "iPhone 15",
@@ -31,7 +31,7 @@
             cratedAt,
             updatedAt
         }
-    ]
+    ]}
 }
 ```
 
@@ -45,7 +45,6 @@ Ejemplo /api/productos/13231ads31
 
 **Respuesta de ejemplo:**
 ```json
-{
     producto:
         {
             _id: "13231ads31"
@@ -64,7 +63,6 @@ Ejemplo /api/productos/13231ads31
             cratedAt,
             updatedAt
         }
-}
 ```
 
 ### 3 
