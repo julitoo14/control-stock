@@ -14,6 +14,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Rutas
 app.use('/api/productos', require('./routes/productos.routes'));
+app.use('/api/categorias', require('./routes/categorias.routes'));
 
 
 

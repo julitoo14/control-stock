@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+    overflow: hidden; /* Desactiva el scroll en el body */
+    height: 100vh; /* Asegura que el body ocupe toda la altura */
+    margin: 0; /* Elimina márgenes */
+  }
+  

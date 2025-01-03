@@ -44,6 +44,34 @@ const getProductById = async (req, res) => {
     }
 };
 
+// Filtra productos 
+const getFilteredProducts = async (req, res) => {
+    try {
+      const { categoria, precioMin, precioMax, search, limit = 20 } = req.query;
+  
+      const query = {};
+      if (categoria) query.categoria = categoria;
+      if (precioMin) query.precio = { ...query.precio, $gte: Number(precioMin) };
+      if (precioMax) query.precio = { ...query.precio, $lte: Number(precioMax) };
+      if (search) query.nombre = { $regex: search, $options: 'i' };
+  
+      // Convertir el límite a número y establecer un valor máximo
+      const limitNum = Math.min(Number(limit), 100); // Máximo 100 productos por página
+  
+      const productos = await Producto.find(query).limit(limitNum);
+      res.status(200).json({
+        status: 'success',
+        products: productos,
+      });
+    } catch (error) {
+      res.status(500).json({
+        error: 'Error al obtener los productos',
+        details: error.message,
+      });
+    }
+  };
+  
+
 // Obtiene todos los productos de una categoría
 const getProductsByCategory = async (req, res) => {
     const category = req.params.category;
@@ -150,6 +178,7 @@ module.exports = {
     getProducts,
     getProductById,
     getProductsByCategory,
+    getFilteredProducts,
     createProduct,
     updateProduct,
     deleteProduct
