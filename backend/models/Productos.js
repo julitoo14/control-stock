@@ -1,5 +1,5 @@
-const { Schema, model } = require('mongoose');
-const Categoria = require('./Categorias');
+import { Schema, model } from 'mongoose';
+import Categoria from './Categorias.js';
 
 const productSchema = new Schema(
   {
@@ -56,4 +56,4 @@ const productSchema = new Schema(
 // Índice para búsquedas rápidas por nombre
 productSchema.index({ nombre: 1 });
 
-module.exports = model('Producto', productSchema);
+export default model('Producto', productSchema);

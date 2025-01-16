@@ -23,7 +23,7 @@ const updateProduct = async (product) => {
 const getProduct = async (id) => {
     try {
         const response = await axios.get(`http://localhost:3900/api/productos/${id}`)
-        return response.data.product
+        return response.data;
     } catch (error) {
         console.error(error)
         throw new Error('No se ha podido obtener el producto')
@@ -33,6 +33,7 @@ const getProduct = async (id) => {
 const getProducts = async (filters) => {
     try {
         const response = await axios.get(`http://localhost:3900/api/productos?${filters}`)
+        console.log(`http://localhost:3900/api/productos?${filters}`)
         return response.data.products
     } catch (error) {
         console.error(error)

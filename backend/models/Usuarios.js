@@ -1,5 +1,5 @@
-const { Schema, model } = require('mongoose');
-const bcrypt = require('bcrypt'); // Para encriptar contraseñas
+import { Schema, model } from 'mongoose';
+import bcrypt from 'bcrypt'; // Para encriptar contraseñas
 
 const usuarioSchema = new Schema(
   {
@@ -37,4 +37,4 @@ usuarioSchema.methods.comparePassword = async function (password) {
   return bcrypt.compare(password, this.password);
 };
 
-module.exports = model('Usuario', usuarioSchema);
+export default model('Usuario', usuarioSchema);

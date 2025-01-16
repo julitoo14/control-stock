@@ -1,4 +1,4 @@
-const { Schema, model } = require('mongoose');
+import { Schema, model } from 'mongoose';
 
 const movimientoSchema = new Schema(
   {
@@ -28,4 +28,4 @@ const movimientoSchema = new Schema(
   }
 );
 
-module.exports = model('Movimiento', movimientoSchema);
+export default model('Movimiento', movimientoSchema);

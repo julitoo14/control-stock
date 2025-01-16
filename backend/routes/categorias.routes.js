@@ -1,9 +1,9 @@
-const express = require('express');
+import express from 'express';
 
 //const check = require('../middlewares/auth');
 const router = express.Router();
-const categoriaController = require('../controllers/categorias.controller');
+import { getCategorias } from '../controllers/categorias.controller.js';
 
-router.get('/', categoriaController.getCategorias);
+router.get('/', getCategorias);
 
-module.exports = router;
+export default router;

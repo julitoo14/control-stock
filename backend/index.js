@@ -1,10 +1,12 @@
-require('dotenv').config();
-const connection = require('./config/database'); // Importa la función de conexión a la BD
+import dotenv from 'dotenv';
+dotenv.config();
+import { connection } from './config/database.js'; // Importa la función de conexión a la BD
 connection();
 //dependencias
-const cors = require('cors');
-const express = require('express');
-const path = require('path');
+import cors from 'cors';
+import express from 'express';
+import productRoutes from './routes/productos.routes.js';
+import categoryRoutes from './routes/categorias.routes.js';
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -13,10 +15,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Rutas
-app.use('/api/productos', require('./routes/productos.routes'));
-app.use('/api/categorias', require('./routes/categorias.routes'));
+app.use('/api/productos', productRoutes);
+app.use('/api/categorias', categoryRoutes);
 
 
-
-app.get('/', (req, res) => res.send('Hello World!'));
 app.listen(port, () => console.log(`Stock app listening on port ${port}!`));
+
+export default app;

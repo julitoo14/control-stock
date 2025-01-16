@@ -1,23 +1,12 @@
-const Categoria = require('../models/Categorias');
+import Categoria from '../models/Categorias.js';
 
-// GET
-// Obtiene todas las categorías
 const getCategorias = async (req, res) => {
     try {
         const categorias = await Categoria.find();
-        return res.status(200).send({
-            status: 'success',
-            categorias: categorias
-        });
+        return res.status(200).json(categorias);
     } catch (error) {
-        return res.status(400).send({
-            status: 'error',
-            message: 'No se pudieron obtener las categorías',
-            error: error.message
-        });
+        return res.status(500).json({ error: error.message });
     }
-};
-
-module.exports = {
-    getCategorias
 }
+
+export { getCategorias };

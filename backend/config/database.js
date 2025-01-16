@@ -1,13 +1,15 @@
-const mongoose = require('mongoose');
-const dotenv = require('dotenv');
+import mongoose from 'mongoose';
+import dotenv from 'dotenv';
 
 // Carga las variables de entorno
 dotenv.config();
 
 let databaseName = process.env.DATABASE_NAME;
 
-if (process.env.NODE_ENV === 'test' || process.env.NODE_ENV === 'development') {
-  databaseName = process.env.TEST_DATABASE_NAME; // Usa la base de datos de pruebas si está en modo test
+if (process.env.NODE_ENV === "test") {
+  databaseName = process.env.TEST_DATABASE_NAME;
+} else if (process.env.NODE_ENV === "development") {
+  databaseName = process.env.DEVELOPMENT_DATABASE_NAME;
 }
 
 
@@ -27,4 +29,4 @@ const connection = async () => {
   }
 };
 
-module.exports = connection;
+export {connection};
