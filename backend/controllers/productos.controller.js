@@ -19,6 +19,10 @@ const updateProduct = async (req, res) => {
     const updatedProduct = await Producto.findByIdAndUpdate(id, body, {
       new: true,
     });
+    if (!updatedProduct) {
+      return res.status(404).json({ error: "Producto no encontrado" });
+    }
+
     return res.status(200).json(updatedProduct);
   } catch (error) {
     return res.status(500).json({ error: error.message });
@@ -28,7 +32,10 @@ const updateProduct = async (req, res) => {
 const deleteProduct = async (req, res) => {
   const { id } = req.params;
   try {
-    await Producto.findByIdAndDelete(id);
+    const deleteProduct = await Producto.findByIdAndDelete(id);
+    if(!deleteProduct){
+      return res.status(404).json({ error: "Producto no encontrado" });
+    }
     return res.status(204).send();
   } catch (error) {
     return res.status(500).json({ error: error.message });

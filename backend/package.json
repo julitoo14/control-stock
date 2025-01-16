@@ -6,6 +6,7 @@
   "main": "index.js",
   "scripts": {
     "test": "NODE_ENV=test mocha --exit tests/*/*.js",
+    "test:integration": "NODE_ENV=test mocha --exit tests/integration/*.js",
     "start": "NODE_ENV=development nodemon index.js"
   },
   "author": "julitoo14",
@@ -22,7 +23,8 @@
     "mongoose": "^8.9.2",
     "nodemon": "^3.1.9",
     "path": "^0.12.7",
-    "sinon": "^19.0.2"
+    "sinon": "^19.0.2",
+    "supertest": "^7.0.0"
   },
   "devDependencies": {
     "chai-http": "^5.1.1"
