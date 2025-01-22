@@ -1,5 +1,5 @@
 <template>
-  <div class="p-2">
+  <div class="">
     <ProductsFilter :categories="categories" @fetch-products="fetchProducts" />
     <ProductsList :products="products" />
   </div>

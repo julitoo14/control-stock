@@ -34,7 +34,7 @@ const getProducts = async (filters) => {
     try {
         const response = await axios.get(`http://localhost:3900/api/productos?${filters}`)
         console.log(`http://localhost:3900/api/productos?${filters}`)
-        return response.data.products
+        return response.data;
     } catch (error) {
         console.error(error)
         throw new Error('No se han podido obtener los productos')
